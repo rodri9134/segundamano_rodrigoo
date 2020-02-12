@@ -118,8 +118,8 @@ class AnunciosController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Anuncio::class);
         $elemento = $request->get("busqueda");
         $anuncios = $repository->busqueda($elemento);
-        $fotos = $anuncios->getFoto();
-        dd($fotos);
+        // $fotos = $anuncios->getFotoPrincipal();
+        // dd($fotos);
         $provincias = $this->muestraProvincias();
         //  dd($productos);
         return $this->render("inicio.html.twig", ['anuncios' => $anuncios, 'titulo' => $titulo, 'provincias' => $provincias]);

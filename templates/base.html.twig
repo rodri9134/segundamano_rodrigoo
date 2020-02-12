@@ -20,8 +20,9 @@ bkLib.onDomLoaded(nicEditors.allTextAreas);
     </head>
     <body>
 
-        <div id="cab" class="cab jumbotron text-center">
-            <h1>TIENDA ARTÍCULOS 2ª MANO RODRIGO</h1>
+        <div id="cab" class="cab text-center">
+       <img class="logo" src="img/vibbo.png">
+            <h3>TIENDA ARTÍCULOS 2ª MANO RODRIGO</h3> 
             {% if app.user %}
                 <div class="mb-3">
                     Estas logueado como:  {{ app.user.username }}, <a href="{{ path('app_logout') }}">Cerrar sesión</a>
