@@ -1,0 +1,84 @@
+{% extends 'base1.html.twig' %}
+{% block title %}{{titulo}}{% endblock %}
+{% block stylesheets %}
+{% endblock %}
+{% block contenido %}
+    <h1>Mis anuncios</h1>
+
+    <div class="row">
+        <div class="col-md-3 col-sm-6 col-lg-3 portfolio-item">
+
+           
+            
+            <form class="form-inline" action="/busquedaProvincia" method="post">
+            <div class="form-group mb-2">
+             <label>Provincias: </label>
+                <select class="form-control" name="provincias">
+                    {% for provincia in provincias %}
+                        <option value="{{provincia.id}}">{{provincia.nombre}}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-primary">Seleccionar provincia</button>
+                </div>
+            </form>
+
+            <a class="btn btn-danger" href="{{path('insertarAnuncio')}}">Insertar anuncio</a>
+
+
+        </div>
+    </div>
+
+    <div class="espacio"></div>
+    <div class="row">
+        {% for anuncio in anuncios %}
+                <div class="col-md-6 col-sm-6 col-lg-2 portfolio-item">
+                <div class="card" style="width: 18rem;">
+
+                    {% for foto in fotos %}
+
+
+                        <img class="imgfluid" alt="{{foto.nombre}}" src="img/{{foto.nombre}}">
+
+
+                    {% endfor %}
+                    <div class="card-body">
+                        <h5 class="card-title">   <a href="" class="card-link">{{anuncio.titulo }}</a></h5>
+
+
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Descripcion: <textarea readonly>{{anuncio.descripcion}}</textarea></li>
+                        <li class="list-group-item">Precio: {{anuncio.precio}} €</li>
+                        <li class="list-group-item">Fecha creación:  {{anuncio.fechacrea|date('d-m-Y')}}</li>
+                        <li class="list-group-item">Modificado: {{anuncio.fechamod|date('d-m-Y')}}</li>
+                        <li class="list-group-item">
+
+                    </ul>
+                    <div class="card-body">
+                   <!-- <form action="/subirFotos">
+                    <input type="text" name="idAnuncio" value="" hidden>
+                    <select name="numFotos">
+                   <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    </select>
+                    <button type="submit">Subir Fotos</button>
+                    </form>-->
+                     <a href="{{path('subirFotos')}}" class="card-link">Subir fotos</a>
+                        <a href="{{path('editarAnuncio',{id:anuncio.id})}}" class="card-link">Modificar anuncio</a>
+                        <a href="{{path('eliminarAnuncio',{id:anuncio.id})}}" class="card-link">Eliminar anuncio</a>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+
+{% endblock %}
+

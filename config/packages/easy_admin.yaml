@@ -1,0 +1,9 @@
+# config/packages/easy_admin.yaml
+# easy_admin:
+#     entities:
+#         Anuncio:
+#             form:
+#                 fields:
+#               - { property: 'description', type: 'fos_ckeditor' }
+#             show:
+#                 max_results: 5

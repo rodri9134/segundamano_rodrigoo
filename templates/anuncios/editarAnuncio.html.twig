@@ -1,0 +1,45 @@
+{% extends 'base1.html.twig' %}
+{% block title %}{{titulo}}{% endblock %}
+{% block stylesheets %}
+{% endblock %}
+{% block contenido %}
+    <h1>{{titulo}}</h1>
+    <div class="row">
+
+        <div class="col-md-3 col-sm-6 col-lg-3 portfolio-item">
+
+            <form action="{{path('modificarAnuncio')}}" method="post">
+                <input type="text" class="form-control" id="idAnuncio" name="idAnuncio" value="{{ anuncio.id }}" hidden>
+                <div class="form-group">
+                    <label for="titulo">Titulo:</label>
+                              
+                    <input type="text" class="form-control" name="titulo" id="titulo" value="{{anuncio.titulo}}">
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripcion:</label>
+                    <textarea class="form-control" name="descripcion" id="descripcion" value="{{ anuncio.descripcion}}" >{{anuncio.descripcion}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="precio">Precio:</label>
+                    <input type="number" class="form-control" name="precio" id="precio" value="{{anuncio.precio}}">
+                </div><!--
+                <div class="form-group">
+                    <label for="fechacreacion">Fecha creación:</label>
+                    <input type="date" class="form-control" id="fechacreacion" value="{{anuncio.fechacrea|date('d-m-Y')}}" disabled>
+                </div>-->
+                <div class="form-group">
+                    <label for="fechamod">Fecha modificación:</label>
+                    <input type="date" class="form-control" name="fechamod" id="fechamod" value="{{anuncio.fechamod|date('d-m-Y')}}">
+                            </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Modificar anauncio</button> 
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+{% endblock %}
+{% block javascripts %}
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{titulo}}{% endblock %}
+{% block stylesheets %}
+{% endblock %}
+{% block contenido %}
+    <h1>{{titulo}}</h1>
+
+    <div class="row">
+        <div class="col-md-3 col-sm-6 col-lg-12 portfolio-item">
+            <div  class="form-inline" >
+            <label>Provincias: </label>&nbsp;&nbsp;&nbsp;
+            <div class="form-group">
+            <form action="/busquedaProvincia" method="post">
+
+                <select name="provincias">
+                    {% for provincia in provincias %}
+                        <option value="{{provincia.id}}">{{provincia.nombre}}</option>
+                    {% endfor %}
+                </select></div>&nbsp;&nbsp;&nbsp;
+                 <div class="form-group">
+                <button type="submit" class="btn btn-warning">Seleccionar provincia</button>
+                </div>
+            </form>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <div class="form-group">
+        <form action="{{path('ordenar')}}" method="post">
+    
+              Ordenar por:  &nbsp;&nbsp;&nbsp;<select class="form-control" name="busqueda">                    <option value="titulo">Titulo</option>
+                         <option value="autor">Autor</option>
+                          <option value="fechacrea">Fecha de creación</option>
+                
+                </select>&nbsp;&nbsp;&nbsp;
+                </div>
+                  <div class="form-group">
+                <select  class="form-control" name="orden">
+               
+                    <option value="asc">Ascendente</option>
+                    <option value="desc">Descendente</option>
+                </select>
+                </div>
+                  <div class="form-group">
+                <button type="submit" class="btn btn-danger">Ordenar</button>
+                </div>
+            </form>
+   </div>
+
+
+        </div>
+    </div>
+    <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previo</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+  </ul>
+</nav>
+    <div class="espacio"></div>
+    <div class="row">
+
+        {% for anuncio in anuncios %}
+            <div class="col-md-6 col-sm-6 col-lg-2 portfolio-item">
+                <div class="card" style="width: 18rem;">
+                        <img class="imgfluid" alt="{{anuncio.fotoprincipal}}" src="img/{{anuncio.fotoprincipal}}">
+
+
+   
+                    <div class="card-body">
+                        <h5 class="card-title">   <a href="" class="card-link">{{anuncio.titulo }}</a></h5>
+
+
+                    </div>
+                    <ul class="list-group list-group-flush">
+
+                        <li class="list-group-item">Precio: {{anuncio.precio}} €</li>
+                        <li class="list-group-item">Fecha creación:  {{anuncio.fechacrea|date('d-m-Y')}}</li>
+                        <li class="list-group-item">Modificado: {{anuncio.fechamod|date('d-m-Y')}}</li>
+                        <li class="list-group-item">
+
+                    </ul>
+                    <div class="card-body">
+                        <a href="{{path('verAnuncioInv',{id:anuncio.id})}}" class="card-link">Ver</a>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+
+{% endblock %}
+

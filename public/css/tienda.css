@@ -1,0 +1,49 @@
+body{
+    margin:2%;
+}
+#cab{
+
+    background-color:#884747;
+    color:white;
+}
+.cab{
+
+    background-color:#884747;
+    color:white;
+
+}
+.col-lg-12{
+    background-color:white;
+
+}
+.menu{
+ 
+    padding: 5px;
+    margin: 5px auto;
+    padding-left: 50px;
+    box-sizing: border-box;
+    position: relative;
+    height: 10px;
+}
+
+.login{
+    position: relative;
+    float:right;
+top:-50px;
+margin:2px;
+padding: 2px;
+    background-color:#C6978D;
+}
+.carrito{
+
+    position: relative;
+    float:right;
+
+margin:2px;
+padding: 2px;
+    background-color:#C6978D;
+
+}
+a{
+    text-decoration: none;
+}

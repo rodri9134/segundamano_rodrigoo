@@ -1,0 +1,66 @@
+{% extends 'base1.html.twig' %}
+{% block title %}{{titulo}}{% endblock %}
+{% block stylesheets %}
+{% endblock %}
+{% block contenido %}
+    <h1>Listado de anuncios</h1>
+    <!--
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-lg-3 portfolio-item">
+                <label>Provincias: </label>
+                <form action="/busquedaProvincia" method="post">
+                    <select name="provincias">
+    {% for provincia in provincias %}
+        <option value="{{provincia.id}}">{{provincia.nombre}}</option>
+    {% endfor %}
+</select>
+<button type="submit" class="btn btn-primary">Seleccionar provincia</button>
+</form>
+
+
+
+
+</div>
+</div>-->
+
+    <div class="espacio"></div>
+    <div class="row">
+        {% for anuncio in anuncios %}
+            <div class="col-md-6 col-sm-6 col-lg-2 portfolio-item">
+                <div class="card" style="width: 18rem;">
+
+
+
+                        <img class="imgfluid" alt="{{anuncio.fotoPrincipal}}" src="img/{{anuncio.fotoPrincipal}}">
+
+
+                    <div class="card-body">
+                        <h5 class="card-title">   <a href="" class="card-link">{{anuncio.titulo }}</a></h5>
+
+
+                    </div>
+                    <ul class="list-group list-group-flush">
+
+                        <li class="list-group-item">Precio: {{anuncio.precio}} €</li>
+                        <li class="list-group-item">Fecha creación:  {{anuncio.fechacrea|date('d-m-Y')}}</li>
+                        <li class="list-group-item">Modificado: {{anuncio.fechamod|date('d-m-Y')}}</li>
+                        <li class="list-group-item">
+
+                    </ul>
+                    <div class="card-body">
+                        <a href="{{path('verAnuncio',{id:anuncio.id})}}" class="card-link">Ver</a>
+                        <!--                          <a href="" class="card-link">Modificar anuncio</a>
+                                                           <a href="" class="card-link">Eliminar anuncio</a>
+                        -->
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+
+{% endblock %}
+
