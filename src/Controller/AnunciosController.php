@@ -18,23 +18,21 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\DateTime;
 
-class AnunciosController extends AbstractController
-{
+class AnunciosController extends AbstractController {
 
     /**
      * @Route("/muestraProvincias", name="muestraProvincias")
      */
-    public function muestraProvincias()
-    {
+    public function muestraProvincias() {
         $repository = $this->getDoctrine()->getRepository(Provincia::class);
         $provincias = $repository->verProvincias();
         return $provincias;
     }
+
     /**
      * @Route("/", name="inicio")
      */
-    public function inicio()
-    {
+    public function inicio() {
         $titulo = "Anuncios";
         $repository = $this->getDoctrine()->getRepository(Anuncio::class);
         $repository2 = $this->getDoctrine()->getRepository(Provincia::class);
@@ -43,16 +41,15 @@ class AnunciosController extends AbstractController
 
         foreach ($anuncios as $anuncio) {
             $fotos = $repository3->findByAnuncio($anuncio->getId());
-
         }
         $provincias = $repository2->verProvincias();
         return $this->render("inicio.html.twig", ['titulo' => $titulo, 'provincias' => $provincias, 'anuncios' => $anuncios, 'fotos' => $fotos]);
     }
+
     /**
      * @Route("/inicioUsuario", name="inicioUsuario")
      */
-    public function inicioUsuario()
-    {
+    public function inicioUsuario() {
 
         $titulo = "Anuncios usuario";
         $repository = $this->getDoctrine()->getRepository(Anuncio::class);
@@ -64,11 +61,11 @@ class AnunciosController extends AbstractController
 
         return $this->render("anuncios/inicioUsuario.html.twig", ['titulo' => $titulo, 'provincias' => $provincias, 'anuncios' => $anuncios]);
     }
+
     /**
      * @Route("/anuncios/invitado/ver/{id}", name="verAnuncioInv", requirements={"id"="\d+"})
      */
-    public function ver($id)
-    {
+    public function ver($id) {
         $titulo = "Anuncio";
         $repository = $this->getDoctrine()->getRepository(Anuncio::class);
         $repository2 = $this->getDoctrine()->getRepository(Foto::class);
@@ -79,7 +76,7 @@ class AnunciosController extends AbstractController
         //dd($fotos);
         if (!$anuncio) {
             throw $this->createNotFoundException(
-                'No existe el anuncio con el id indicado' . $id
+                    'No existe el anuncio con el id indicado' . $id
             );
         }
         return $this->render("verAnuncioInv.html.twig", ['anuncio' => $anuncio, 'titulo' => $titulo, 'fotos' => $fotos, 'user' => $user]);
@@ -88,8 +85,7 @@ class AnunciosController extends AbstractController
     /**
      * @Route("/anuncios/verAnuncio/{id}", name="verAnuncio", requirements={"id"="\d+"})
      */
-    public function verAnuncio($id)
-    {
+    public function verAnuncio($id) {
         $titulo = "Anuncio";
         $repository = $this->getDoctrine()->getRepository(Anuncio::class);
         $repository2 = $this->getDoctrine()->getRepository(Foto::class);
@@ -103,7 +99,7 @@ class AnunciosController extends AbstractController
         //dd($fotos);
         if (!$anuncio) {
             throw $this->createNotFoundException(
-                'No existe el anuncio con el id indicado' . $id
+                    'No existe el anuncio con el id indicado' . $id
             );
         }
         return $this->render("anuncios/verAnuncio.html.twig", ['anuncio' => $anuncio, 'titulo' => $titulo, 'fotos' => $fotos, 'user' => $user]);
@@ -112,8 +108,7 @@ class AnunciosController extends AbstractController
     /**
      * @Route("/busqueda", name="busqueda")
      */
-    public function busqueda(Request $request)
-    {
+    public function busqueda(Request $request) {
         $titulo = "Búsqueda de productos";
         $repository = $this->getDoctrine()->getRepository(Anuncio::class);
         $elemento = $request->get("busqueda");
@@ -124,11 +119,11 @@ class AnunciosController extends AbstractController
         //  dd($productos);
         return $this->render("inicio.html.twig", ['anuncios' => $anuncios, 'titulo' => $titulo, 'provincias' => $provincias]);
     }
+
     /**
      * @Route("/busquedaProvincia", name="busquedaProvincia")
      */
-    public function busquedaPorProvincia(Request $request)
-    {
+    public function busquedaPorProvincia(Request $request) {
         $titulo = "Búsqueda por provincia";
         $repository = $this->getDoctrine()->getRepository(Anuncio::class);
         $provincia = $request->get("provincias");
@@ -137,14 +132,12 @@ class AnunciosController extends AbstractController
         $provincias = $this->muestraProvincias();
 
         return $this->render("inicio.html.twig", ['anuncios' => $anuncios, 'titulo' => $titulo, 'provincias' => $provincias, 'fotos' => $fotos]);
-
     }
 
     /**
      * @Route("/insertarAnuncio", name="insertarAnuncio")
      */
-    public function insertarAnuncio(Request $request)
-    {
+    public function insertarAnuncio(Request $request) {
         $titulo = "Insertar Anuncio";
         $idUsuario = $this->getUser()->getId();
 
@@ -152,26 +145,23 @@ class AnunciosController extends AbstractController
 
         $foto = new Foto();
         $form = $this->createFormBuilder($anuncio, ['attr' => ['id' => 'insertarAnuncio']])
-
-            ->add('titulo', TextType::class, ['attr' => ['class' => 'form-control']])
-            ->add('descripcion', TextareaType::class, array(
-      
-                'required' => false), ['attr' => ['class' => 'form-control']])
-            ->add('precio', MoneyType::class, ['attr' => ['class' => 'form-control']])
-            ->add('fechacrea', DateType::class, ['attr' => ['class' => 'form-control']])
-        //   ->add('fechamod', DateType::class, ['attr' => ['class' => 'form-control']])
-            ->add('FotoPrincipal', FileType::class)
-        //   ->add('Fotos', FileType::class, array('label' => 'Fotos', 'multiple' => true, 'mapped' =>true))
-            ->add('Crear_Anuncio', SubmitType::class, ['attr' => ['class' => 'btn btn-danger']])
-
-            ->getForm();
+                ->add('titulo', TextType::class, ['attr' => ['class' => 'form-control']])
+                ->add('descripcion', TextareaType::class, array(
+                    'required' => false), ['attr' => ['class' => 'form-control']])
+                ->add('precio', MoneyType::class, ['attr' => ['class' => 'form-control']])
+                ->add('fechacrea', DateType::class, ['attr' => ['class' => 'form-control']])
+                //   ->add('fechamod', DateType::class, ['attr' => ['class' => 'form-control']])
+                ->add('FotoPrincipal', FileType::class)
+                //   ->add('Fotos', FileType::class, array('label' => 'Fotos', 'multiple' => true, 'mapped' =>true))
+                ->add('Crear_Anuncio', SubmitType::class, ['attr' => ['class' => 'btn btn-danger']])
+                ->getForm();
 
         $form->handleRequest($request);
 
         $foto = $form->get('FotoPrincipal')->getData();
 
         if ($form->isSubmitted() && $form->isValid()) {
-         //   dd($foto);
+            //   dd($foto);
             if ($foto) {
                 $extensión = pathinfo($foto->getClientOriginalName(), PATHINFO_EXTENSION);
 
@@ -179,11 +169,11 @@ class AnunciosController extends AbstractController
                 $foto->move("img", "$nuevo_nombre_archivo");
                 $anuncio->setFotoPrincipal($nuevo_nombre_archivo);
             }
-            $usuario=new User();
+            $usuario = new User();
             $idUsuario = $this->getUser()->getId();
             $usuario->setId($idUsuario);
             //dd($usuario);
-          //  dd($usuario->getId());
+            //  dd($usuario->getId());
             $anuncio->setUser($this->getUser());
             $anuncio = $form->getData();
             $foto = $form->getData('foto');
@@ -192,16 +182,15 @@ class AnunciosController extends AbstractController
             $entityManager->persist($anuncio);
             $entityManager->flush();
             return $this->redirectToRoute('inicioUsuario');
-           // return $this->redirectToRoute('misAnuncios');
+            // return $this->redirectToRoute('misAnuncios');
         }
         return $this->render("anuncios/crearAnuncio.html.twig", ['crear_anuncio' => $form->createView(), 'titulo' => $titulo]);
-
     }
+
     /**
      * @Route("/anunciosUsuario", name="anunciosUsuario")
      */
-    public function listadoAnunciosUsuario()
-    {
+    public function listadoAnunciosUsuario() {
 
         $titulo = "Anuncios usuario";
         $repository = $this->getDoctrine()->getRepository(Anuncio::class);
@@ -212,18 +201,17 @@ class AnunciosController extends AbstractController
 
         foreach ($anuncios as $anuncio) {
             $fotos = $repository3->findByAnuncio($anuncio->getId());
-
         }
 
         $provincias = $repository2->verProvincias();
 
         return $this->render("anuncios/misAnuncios.html.twig", ['titulo' => $titulo, 'provincias' => $provincias, 'anuncios' => $anuncios, 'fotos' => $fotos]);
     }
+
     /**
      * @Route("/editarAnuncio/{id}", name="editarAnuncio")
      */
-    public function editarAnuncio($id)
-    {
+    public function editarAnuncio($id) {
         $titulo = "Anuncio";
         $repository = $this->getDoctrine()->getRepository(Anuncio::class);
         $repository2 = $this->getDoctrine()->getRepository(Foto::class);
@@ -231,17 +219,16 @@ class AnunciosController extends AbstractController
 
         if (!$anuncio) {
             throw $this->createNotFoundException(
-                'No existe el anuncio con el id indicado' . $id
+                    'No existe el anuncio con el id indicado' . $id
             );
         }
         return $this->render("anuncios/editarAnuncio.html.twig", ['anuncio' => $anuncio, 'titulo' => $titulo]);
-
     }
+
     /**
      * @Route("/modificarAnuncio", name="modificarAnuncio")
      */
-    public function modificarAnuncio(Request $request)
-    {
+    public function modificarAnuncio(Request $request) {
         $entityManager = $this->getDoctrine()->getManager();
         $repository = $this->getDoctrine()->getRepository(Anuncio::class);
         //  dd($request);
@@ -251,7 +238,7 @@ class AnunciosController extends AbstractController
         //  dd($titulo);
         $descripcion = $request->get('descripcion');
         $precio = $request->get('precio');
-        $fechamod = \DateTime::createFromFormat('Y-m-d', $request->get('fechamod')); 
+        $fechamod = \DateTime::createFromFormat('Y-m-d', $request->get('fechamod'));
         $anuncio = $repository->find($idAnuncio);
         $anuncio->setTitulo($titulo);
         $anuncio->setDescripcion($descripcion);
@@ -261,11 +248,11 @@ class AnunciosController extends AbstractController
         $entityManager->flush();
         return $this->redirectToRoute('inicioUsuario');
     }
+
     /**
      * @Route("/anuncio/eliminarAnuncio/{id}", name="eliminarAnuncio")
      */
-    public function eliminarAnuncio($id, Request $request)
-    {
+    public function eliminarAnuncio($id, Request $request) {
         $anuncio = new Anuncio();
         $repository = $this->getDoctrine()->getRepository(Anuncio::class);
 
@@ -277,11 +264,11 @@ class AnunciosController extends AbstractController
 
         return $this->redirectToRoute('misAnuncios');
     }
+
     /**
      * @Route("/ordenar}", name="ordenar")
      */
-    public function ordenPorTAF(Request $request)
-    {
+    public function ordenPorTAF(Request $request) {
 
         $busqueda = $request->get('busqueda');
         $orden = $request->get('orden');
@@ -292,6 +279,6 @@ class AnunciosController extends AbstractController
         $provincias = $this->muestraProvincias();
         $titulo = "Ordenación de los anuncios por " . $busqueda . " " . $orden;
         return $this->render("inicio.html.twig", ['anuncios' => $anuncios, 'titulo' => $titulo, 'provincias' => $provincias]);
-
     }
+
 }

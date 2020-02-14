@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2c586de27d48ad7846f515efbb9ed8f0",
+    "content-hash": "c2dc9479403981bca5d1deff941c33e2",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1525,16 +1525,16 @@
         },
         {
             "name": "knpuniversity/oauth2-client-bundle",
-            "version": "v1.32.0",
+            "version": "v1.33.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/knpuniversity/oauth2-client-bundle.git",
-                "reference": "825b0c4512e51615318c8fbd4a57c7e65a57216d"
+                "reference": "4f71b8a3e6696bc5aafccbb2ce51928e4d2d0794"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/knpuniversity/oauth2-client-bundle/zipball/825b0c4512e51615318c8fbd4a57c7e65a57216d",
-                "reference": "825b0c4512e51615318c8fbd4a57c7e65a57216d",
+                "url": "https://api.github.com/repos/knpuniversity/oauth2-client-bundle/zipball/4f71b8a3e6696bc5aafccbb2ce51928e4d2d0794",
+                "reference": "4f71b8a3e6696bc5aafccbb2ce51928e4d2d0794",
                 "shasum": ""
             },
             "require": {
@@ -1578,7 +1578,7 @@
                 "oauth",
                 "oauth2"
             ],
-            "time": "2020-01-10T15:50:30+00:00"
+            "time": "2020-02-07T13:20:48+00:00"
         },
         {
             "name": "league/oauth2-client",
@@ -6025,16 +6025,16 @@
         },
         {
             "name": "symfony/validator",
-            "version": "v5.0.3",
+            "version": "v5.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/validator.git",
-                "reference": "bad9814bf042b01b326c77cbb7740a03e5667ccf"
+                "reference": "dcde9e9116f0b0ee8623dafafea0eb7d57954b2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/validator/zipball/bad9814bf042b01b326c77cbb7740a03e5667ccf",
-                "reference": "bad9814bf042b01b326c77cbb7740a03e5667ccf",
+                "url": "https://api.github.com/repos/symfony/validator/zipball/dcde9e9116f0b0ee8623dafafea0eb7d57954b2e",
+                "reference": "dcde9e9116f0b0ee8623dafafea0eb7d57954b2e",
                 "shasum": ""
             },
             "require": {
@@ -6113,7 +6113,7 @@
             ],
             "description": "Symfony Validator Component",
             "homepage": "https://symfony.com",
-            "time": "2020-01-21T08:40:24+00:00"
+            "time": "2020-01-31T09:13:47+00:00"
         },
         {
             "name": "symfony/var-dumper",

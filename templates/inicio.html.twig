@@ -62,13 +62,8 @@
             <div class="col-md-6 col-sm-6 col-lg-2 portfolio-item">
                 <div class="card" style="width: 18rem;">
                         <img class="imgfluid" alt="{{anuncio.fotoprincipal}}" src="img/{{anuncio.fotoprincipal}}">
-
-
-   
                     <div class="card-body">
                         <h5 class="card-title">   <a href="" class="card-link">{{anuncio.titulo }}</a></h5>
-
-
                     </div>
                     <ul class="list-group list-group-flush">
 
@@ -76,7 +71,6 @@
                         <li class="list-group-item">Fecha creación:  {{anuncio.fechacrea|date('d-m-Y')}}</li>
                         <li class="list-group-item">Modificado: {{anuncio.fechamod|date('d-m-Y')}}</li>
                         <li class="list-group-item">
-
                     </ul>
                     <div class="card-body">
                         <a href="{{path('verAnuncioInv',{id:anuncio.id})}}" class="card-link">Ver</a>

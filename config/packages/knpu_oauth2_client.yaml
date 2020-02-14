@@ -9,3 +9,4 @@ knpu_oauth2_client:
             # the route that you're redirected to after
             redirect_route: connect_google_check
             redirect_params: {}
+

@@ -23,7 +23,7 @@ class Foto
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Anuncio", inversedBy="fotos")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Anuncio", inversedBy="fotos",cascade={"persist", "remove"})
      */
     private $anuncio;
 

@@ -18,7 +18,7 @@
                         <option value="{{provincia.id}}">{{provincia.nombre}}</option>
                     {% endfor %}
                 </select>
-                <button type="submit" class="btn btn-danger">Seleccionar provincia</button>
+                <button type="submit" class="btn btn-primary">Seleccionar provincia</button>
                 </div>
             </form>
 
@@ -66,7 +66,7 @@
                     </select>
                     <button type="submit">Subir Fotos</button>
                     </form>-->
-                     <a href="{{path('subirFotos')}}" class="card-link">Subir fotos</a>
+                     <a href="{{path('subirFoto',{id:anuncio.id})}}" class="card-link">Subir foto</a>
                         <a href="{{path('editarAnuncio',{id:anuncio.id})}}" class="card-link">Modificar anuncio</a>
                         <a href="{{path('eliminarAnuncio',{id:anuncio.id})}}" class="card-link">Eliminar anuncio</a>
 
